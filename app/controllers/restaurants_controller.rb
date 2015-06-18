@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  
   def index
     @restaurant = Restaurant.all
   end
@@ -12,8 +13,12 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    Restaurant.create(restaurant_params)
+    @restaurant = Restaurant.create(restaurant_params)
     redirect_to '/restaurants'
+  end
+
+  def show
+    @restaurant = Restaurant.find(params[:id])
   end
 
 end
